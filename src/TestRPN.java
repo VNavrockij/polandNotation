@@ -30,7 +30,7 @@ public class TestRPN {
                 case "^":
                     Double value1 = stack.pop();
                     Double value2 = stack.pop();
-                    Double result = pow(value1, value2);
+                    Double result = pow(value2, value1);
                     stack.push(result);
                     break;
                 default:
