@@ -5,10 +5,13 @@ import java.util.Stack;
 
 public class FormulaParse {
     public static void main(String[] args) {
-        String formula = "10.0-50/5";
+        String formula = "100-50/5";
 //        System.out.println(Arrays.toString(formula.split("\\b")));
         System.out.println(getPolandNotation(formula));
 
+        String[] arr = getPolandNotation(formula).toArray(new String[getPolandNotation(formula).size()]);
+        double result = TestRPN.evalAnswer(arr);
+        System.out.println(result);
 
     }
 
