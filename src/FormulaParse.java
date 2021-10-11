@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class FormulaParse {
     public static void main(String[] args) {
-        String formula = "(100-50)/5";
+        String formula = "10.0-50/5";
 //        System.out.println(Arrays.toString(formula.split("\\b")));
         System.out.println(getPolandNotation(formula));
 
@@ -20,9 +20,9 @@ public class FormulaParse {
         String temp = "";
         for (int i = 0; i < text.length(); i+=1) {
             symbol = text.charAt(i);
-            if (Character.isDigit(symbol)){
+            if (isDigitsWithDot(symbol)){
                 temp += String.valueOf(symbol);
-                if (i == text.length() - 1 || !Character.isDigit(text.charAt(i + 1))) {
+                if (i == text.length() - 1 || !isDigitsWithDot(text.charAt(i + 1))) {
                     box1.add(temp);
                     temp = "";
                 }
@@ -55,6 +55,13 @@ public class FormulaParse {
     private static boolean isMathSymbol(char symbol) {
         return symbol == '(' || symbol == ')' || symbol == '-' ||
                 symbol == '+' || symbol == '/' || symbol == '*' || symbol == '^';
+    }
+
+    private static boolean isDigitsWithDot(char c) {
+        if (c >= '0' && c <= '9' || c == '.'){
+            return true;
+        }
+            return false;
     }
 
     private static int getPriority(char sym) {
